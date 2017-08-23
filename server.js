@@ -57,11 +57,11 @@ res.send(JSON.stringify(names)); //ToDo
 
 app.get('/articles/:articleName', function (req, res)
 {
-// articleName==article-one
+// articleName=='article-one'
 // articles[articleName]= { }content object of article-one
 
 
-pool.query("SELECT * FROM article WHERE title= " *req.params.articleName,function(err,result){
+pool.query("SELECT * FROM article WHERE title='"+req.params.articleName +"'",function(err,result){
     
     if(err){
     res.status(500).send (err.toString());
