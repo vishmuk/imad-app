@@ -1,9 +1,17 @@
 body
 {
-color: blue;
 font-size : 20px;
-
 background: url("https://image.freepik.com/free-psd/abstract-background-design_1297-84.jpg") no-repeat center;
-background-size: medium;
 height: 400px;
 }
+
+.container
+{
+    margin: 0 auto;
+    color: #1339ca;
+    font-family: sans-serif;
+    padding-top: 40px;
+    padding-left: 50px;
+    padding-right: 60px;
+}
+
