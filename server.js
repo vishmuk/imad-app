@@ -5,6 +5,56 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articleOne = {
+  title:"Article One",
+  heading:"Article One",
+  date:"Aug 24th 2017",
+  content:`<p>
+            This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
+        </p>
+        <p>
+            This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
+        </p>`
+  
+};
+
+function createTemplate(data){
+    var title = data.title;
+    var date = data.date;
+    var heading = data.heading;
+    var content = data.content;
+    
+    var htmlTemplate = `
+    <html>
+    <head>
+        <title>
+            ($title)
+        </title>
+        <link href="/ui/style.css"  rel="stylesheet" />
+        <meta name='viexport content = width-device-width,initial-scale=1' />
+    </head>
+    <body>
+    <div>
+        <a href="/">Home</a>
+    </div>
+    <hr/>
+    <h3>
+        $(heading)
+    </h3>
+    <div class="container">
+        <div>
+            $(date)
+        </div>
+    <div>
+        $(content)
+    </div>
+    </div>
+    <marquee>Created a webpage!</marquee>
+    </body>
+    </html>`;
+return htmlTemplate;
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -14,7 +64,7 @@ app.get('/ui/style.css', function (req, res) {
 });
 
 app.get('/article-one',function (req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+    res.send(createTemplate(articleOne));
 });
 
 app.get('/article-two',function (req,res){
