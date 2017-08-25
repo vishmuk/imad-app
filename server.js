@@ -28,7 +28,7 @@ function createTemplate(data){
     <html>
     <head>
         <title>
-            $(title)
+            ${title}
         </title>
         <link href="/ui/style.css"  rel="stylesheet" />
         <meta name='viexport content = width-device-width,initial-scale=1' />
@@ -39,14 +39,14 @@ function createTemplate(data){
     </div>
     <hr/>
     <h3>
-        $(heading)
+        ${heading}
     </h3>
     <div class="container">
         <div>
-            $(date)
+            ${date}
         </div>
     <div>
-        $(content)
+        ${content}
     </div>
     </div>
     <marquee>This is a webpage with function!</marquee>
