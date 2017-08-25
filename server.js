@@ -49,7 +49,7 @@ function createTemplate(data){
         $(content)
     </div>
     </div>
-    <marquee>Created a webpage!</marquee>
+    <marquee>This is a webpage with function!</marquee>
     </body>
     </html>`;
 return htmlTemplate;
