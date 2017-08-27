@@ -10,7 +10,7 @@ var img = document.getElementById("green");
 
 var marginLeft = 0;
 function moveRight (){
-    marginLeft = marginLeft + 10 px;
+    marginLeft = marginLeft + 10;
     img.style.marginLeft = marginLeft + 'px';
 }
 
