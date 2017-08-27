@@ -9,5 +9,5 @@ element.innerHTML= "new value tested";
 var img = document.getElementById("green");
 img.onclick = function ()
 {
-    img.style.marginleft='100px';
+    img.style.marginleft='200px';
 };
