@@ -6,7 +6,7 @@ var element =  document.getElementById("main-text");
 element.innerHTML= "new value tested";
 
 //move the image on click
-var img=document.getElementbyId("image")
+var img=document.getElementbyId("image");
 img.onclick = function (){
     img.style.marginleft='100px'
 }
