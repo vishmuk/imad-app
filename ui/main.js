@@ -7,7 +7,16 @@ element.innerHTML= "new value tested";
 
 //move the image on click
 var img = document.getElementById("green");
+
+var marginLeft = 0;
+function moveRight (){
+    marginLeft = marginLeft + 10 px;
+    img.style.marginLeft = marginLeft + 'px';
+}
+
 img.onclick = function ()
 {
-    img.style.marginLeft='200px';
+    var interval = setInterval(moveRight,100);
+    //img.style.marginLeft='200px';
+    
 };
