@@ -21,7 +21,7 @@ img.onclick = function ()
     
 };*/
 //counter code
-var bujtton = document.getElementById("counter");
+var button = document.getElementById("counter");
 counter = 0;
 
 button.onclick = function(){
