@@ -48,7 +48,7 @@ button.onclick = function(){
   //render the variable in a correct span
  // counter = counter + 1;
   //Make the request
-  request.open("GET",'http://vishmuk48.imad.hasura-app.io/counter', true);
+  request.open("GET", "http://vishmuk48.imad.hasura-app.io/counter", true);
   request.send(null);
   
 };
