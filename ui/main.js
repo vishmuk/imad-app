@@ -84,7 +84,7 @@ submit.onclick = function(){
    
     
     
-};
+
 
   
   //render the variable in a correct span
