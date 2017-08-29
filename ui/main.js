@@ -49,8 +49,7 @@ button.onclick = function(){
 };
 
   //submit name
-var nameInput = document.getElementById('n');
-var n = nameInput.value;
+
 var submit=document.getElementById('submit_btn');
 
 submit.onclick = function(){
@@ -76,6 +75,8 @@ submit.onclick = function(){
   //not done yet
   
   };
+  var nameInput = document.getElementById('n');
+  var n = nameInput.value;
   request.open("GET", "http://vishmuk48.imad.hasura-app.io/submit-name?name=" + n, true);
   request.send(null);
   
