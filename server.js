@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
+var crypto = require('crypto');
 
 var config = {
     user:'vishmuk48',
@@ -9,13 +10,10 @@ var config = {
     host:'db.imad.hasura-app.io',
     port: '5432',
     password:process.env.DB_PASSWORD
-}
+};
 
 var app = express();
 app.use(morgan('combined'));
-
-
-
 
 function createTemplate(data){
     var title = data.title;
@@ -53,6 +51,17 @@ function createTemplate(data){
     </html>`;
 return htmlTemplate;
 }
+
+function hash(input, salt){
+    //how do we create a hash
+    var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
+    return hashed.toString('hex');
+    
+}
+app.get('/hash/:input',function(req,res){
+    var hashedString = hash(req.params.input, 'this-is-some-random-string');
+    res.send(hashedString);
+});
 
 var pool = new Pool(config);
 app.get('/test-db',function(req,res){
@@ -104,18 +113,18 @@ app.get('/articles/:articleName',function (req,res){
     //SELECT * FROM article WHERE title = '\'; DELETE WHERE a= \'asdf'
     pool.query("SELECT * FROM article WHERE title= $1" ,  [req.params.articleName], function(err,result) {
       if (err)   {
-          res.status(500).send(err.toString());
-          
-      }else {
-          if(result.rows.length === 0){
-              res.status(404).send("Article Not Found");
-              }else {
-                  var articleData = result.rows[0];
-                   res.send(createTemplate(articleData));
-              }
-      }
-    });
-    
+                    res.status(500).send(err.toString());
+              
+                  }else {
+                            if(result.rows.length === 0){
+                            res.status(404).send("Article Not Found");
+                            }else {
+                                    var articleData = result.rows[0];
+                                    res.send(createTemplate(articleData));
+                                   }
+                        }
+                   });
+        
    
 });
 
