@@ -21,7 +21,7 @@ img.onclick = function ()
     
 };*/
 //counter code
-var button = document.getElementById("counter");
+/*var button = document.getElementById("counter");
 //counter = 0;
 
 button.onclick = function(){
@@ -46,9 +46,9 @@ button.onclick = function(){
   request.open("GET", "http://vishmuk48.imad.hasura-app.io/counter", true);
   request.send(null);
   
-};
+};*/
 
-  //submit name
+  //submit username/password to login
 
 var submit=document.getElementById('submit_btn');
 
@@ -59,26 +59,41 @@ submit.onclick = function(){
   request.onreadystatechange = function(){
       if (request.readyState === XMLHttpRequest.DONE) {
       //take an action
-      if(request.status==200){
+      
           //make a request to the server and send the name
     //capture a list of names and render as a list
-   var names = request.responseText;
+    //console.log('user logged in');
+    if(request.status==200){
+    alert('Logged in successful');
+      } else if(request.status === 403){
+          alert('username/password is incorrect');
+        } else if (request.status === 500) {
+            alert('something went wrong');
+            }
+      }
+  };
+  
+   /*var names = request.responseText;
    names = JSON.parse(names);
    var list = '';
     for (var i=0; i< names.length;i++){
        list += '<li>' + names[i] + '</li>'; 
     }
   var ul =document.getElementById('namelist');
-  ul.innerHTML = list;
-          }
-  } 
+  ul.innerHTML = list;*/
+          
+  
   //not done yet
   
   };
-  var nameInput = document.getElementById('n');
-  var n = nameInput.value;
-  request.open("GET", "http://vishmuk48.imad.hasura-app.io/submit-name?name=" + n, true);
-  request.send(null);
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
+  //var n = nameInput.value;
+  console.log(username);
+  console.log(password);
+  request.open('POST', 'http://vishmuk48.imad.hasura-app.io/login', true);
+  request.setRequestHeader('Content-Type', 'application/json');
+  request.send(JSON.stringify({username: username, password: password}));
   
 };
    
