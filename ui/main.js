@@ -71,7 +71,7 @@ submit.onclick = function(){
             alert('something went wrong');
             }
       }
-  };
+  
   
    /*var names = request.responseText;
    names = JSON.parse(names);
@@ -84,7 +84,7 @@ submit.onclick = function(){
           
   
   //not done yet
-  
+  };
   
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
