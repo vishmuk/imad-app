@@ -87,7 +87,8 @@ app.post('/create-user/', function(req,res){
       }
       else
       {
-          res.send('User successfully created:' +username);
+          //res.send('User successfully created:' +username);
+          res.send(JSON.parse('{"message":"User successfully created: ' + username + ' "} ') );
       }
    });
 });
