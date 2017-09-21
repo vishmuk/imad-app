@@ -116,7 +116,9 @@ app.post('/login' , function(req,res) {
               //{ auth : {userid}}
               
               
-            res.send('credentials correct!');
+            //res.send('credentials correct!');
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.parse('{"message":"Credential Correct"}'));
           } else {
                res.send(403).send('username/password is invalid');
           }
